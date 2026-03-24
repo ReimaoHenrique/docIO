@@ -33,6 +33,12 @@ const INITIAL_MODELS: DocumentModel[] = [
     name: 'Recibo de Pagamento',
     description: 'Comprovante de recebimento de valores.',
     fields: ['Recebedor', 'Pagador', 'Valor Extenso', 'Referente a']
+  },
+  {
+    slug: 'fosfato-gaviao',
+    name: 'Fosfato Gavião - Custo',
+    description: 'Modelo de custo baseado no documento oficial Gavião.',
+    fields: ['Cliente/Projeto', 'Produto', 'Quantidade', 'Valor Unitário', 'Data']
   }
 ];
 
