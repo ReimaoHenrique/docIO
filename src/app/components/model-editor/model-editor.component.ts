@@ -139,6 +139,18 @@ export class ModelEditorComponent implements AfterViewInit, OnDestroy {
     const markdownText = this.easyMDE.value();
     const doc = new jsPDF();
 
+    // Watermark Logo
+    const logoUrl = 'logo-bg-branca.svg';
+    try {
+        doc.setGState(new (doc as any).GState({ opacity: 0.1 }));
+        // Note: jsPDF handles SVG better when they are simple, but for complex ones or those with data URIs,
+        // it might fail. However, we'll try to use the public URL.
+        doc.addImage(logoUrl, 'SVG', 40, 60, 130, 180);
+        doc.setGState(new (doc as any).GState({ opacity: 1.0 }));
+    } catch (e) {
+        console.error('Could not add watermark to PDF', e);
+    }
+
     // Header
     doc.setFillColor(0, 102, 204);
     doc.rect(0, 0, 210, 20, 'F');
@@ -169,7 +181,6 @@ export class ModelEditorComponent implements AfterViewInit, OnDestroy {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(11);
 
-    // Simple line splitting for markdown content (simulation)
     const lines = doc.splitTextToSize(markdownText, 180);
     doc.text(lines, 15, y);
 

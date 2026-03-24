@@ -1,0 +1,35 @@
+
+> doc-io@0.0.0 start
+> ng serve
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names         | Raw size
+main.js             | main          | 49.92 kB |
+styles.css          | styles        | 14.81 kB |
+
+                    | Initial total | 64.73 kB
+
+Application bundle generation complete. [9.025 seconds] - 2026-03-24T13:31:35.680Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names         | Raw size
+main.js             | main          | 49.92 kB |
+styles.css          | styles        | 14.81 kB |
+
+                    | Initial total | 64.73 kB
+
+Application bundle generation complete. [0.016 seconds] - 2026-03-24T13:31:36.862Z
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names | Raw size
+main.js             | main  | 50.02 kB |
+
+Application bundle generation complete. [0.933 seconds] - 2026-03-24T13:33:37.667Z
+
+Page reload sent to client(s).

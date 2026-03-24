@@ -9,5 +9,5 @@ import { HeaderComponent } from './components/header/header.component';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('docIO');
+  protected readonly title = signal('Andrade & Lima com DocIO');
 }
