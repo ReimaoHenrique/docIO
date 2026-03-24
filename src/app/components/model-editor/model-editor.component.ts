@@ -33,7 +33,8 @@ import EasyMDE from 'easymde';
               <input
                 type="text"
                 [id]="field"
-                [(ngModel)]="formData()[field]"
+                [ngModel]="formData()[field]"
+                (ngModelChange)="updateFormField(field, $event)"
                 [name]="field"
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                 placeholder="Preencha o valor..."
@@ -92,6 +93,10 @@ export class ModelEditorComponent implements AfterViewInit, OnDestroy {
   });
 
   formData = signal<Record<string, string>>({});
+
+  updateFormField(field: string, value: string) {
+    this.formData.update(data => ({ ...data, [field]: value }));
+  }
 
   constructor() {
     this.route.params.subscribe(params => {
