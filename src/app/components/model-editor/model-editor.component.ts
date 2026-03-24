@@ -144,16 +144,16 @@ export class ModelEditorComponent implements AfterViewInit, OnDestroy {
     const logoUrl = 'logo-bg-branca.svg';
 
     // Drawing the watermark FIRST so it's in the background
-    // Using a simpler approach: draw the image with global transparency
     const addWatermark = (pdf: jsPDF) => {
         try {
             // @ts-ignore
+            pdf.saveGraphicsState();
+            // @ts-ignore
             pdf.setGState(new pdf.GState({ opacity: 0.1 }));
             // We'll use the SVG directly as jsPDF-autotable or jspdf should handle it
-            // If it fails, we'd need to use a pre-processed PNG
             pdf.addImage(logoUrl, 'SVG', 40, 60, 130, 180);
             // @ts-ignore
-            pdf.setGState(new pdf.GState({ opacity: 1.0 }));
+            pdf.restoreGraphicsState();
         } catch (e) {
             console.error('Watermark error', e);
         }
