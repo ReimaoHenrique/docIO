@@ -140,9 +140,18 @@ export class ModelEditorComponent implements AfterViewInit, OnDestroy {
     const doc = new jsPDF();
 
     // Watermark Logo - MUST BE ADDED FIRST TO BE IN BACKGROUND
-    // We fetch the logo and convert to base64 or use the known data from the SVG
     const logoUrl = 'logo-bg-branca.svg';
-
+    try {
+        // @ts-ignore
+        doc.saveGraphicsState();
+        // @ts-ignore
+        doc.setGState(new doc.GState({ opacity: 0.1 }));
+        doc.addImage(logoUrl, 'SVG', 40, 60, 130, 180);
+        // @ts-ignore
+        doc.restoreGraphicsState();
+    } catch (e) {
+        console.error('Watermark error', e);
+    }
 
     // Header
     doc.setFillColor(0, 102, 204);
