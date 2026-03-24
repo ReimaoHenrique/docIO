@@ -143,23 +143,6 @@ export class ModelEditorComponent implements AfterViewInit, OnDestroy {
     // We fetch the logo and convert to base64 or use the known data from the SVG
     const logoUrl = 'logo-bg-branca.svg';
 
-    // Drawing the watermark FIRST so it's in the background
-    const addWatermark = (pdf: jsPDF) => {
-        try {
-            // @ts-ignore
-            pdf.saveGraphicsState();
-            // @ts-ignore
-            pdf.setGState(new pdf.GState({ opacity: 0.1 }));
-            // We'll use the SVG directly as jsPDF-autotable or jspdf should handle it
-            pdf.addImage(logoUrl, 'SVG', 40, 60, 130, 180);
-            // @ts-ignore
-            pdf.restoreGraphicsState();
-        } catch (e) {
-            console.error('Watermark error', e);
-        }
-    };
-
-    addWatermark(doc);
 
     // Header
     doc.setFillColor(0, 102, 204);
